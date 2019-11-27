@@ -16,10 +16,15 @@ NEWSPIDER_MODULE = 'nurse_events.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'nurse_events (+http://www.yourdomain.com)'
+# USER_AGENT = 'nurse_events (+http://www.yourdomain.com)'
+# USER_AGENT = 'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36'
+# USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:39.0) Gecko/20100101 Firefox/39.0'
+# https://support.google.com/webmasters/answer/1061943?hl=en
+USER_AGENT = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+# ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -27,7 +32,8 @@ ROBOTSTXT_OBEY = True
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 3
+RANDOMIZE_DOWNLOAD_DELAY = True
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
@@ -64,9 +70,21 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'nurse_events.pipelines.NurseEventsPipeline': 300,
-#}
+ITEM_PIPELINES = {
+#    'nurse_events.pipelines.DuplicatesPipeline': 200,
+   'nurse_events.pipelines.ValidatePipeline': 200,
+#    'nurse_events.pipelines.MongoPipeline': 300,
+   'nurse_events.pipelines.NotifyTelegramPipeline': 400,
+}
+
+# Database
+MONGO_URI = 'mongodb://localhost:27017'
+MONGO_DB = 'nurse-events'
+# Telegram
+TELEGRAM_CHANNEL_NAME = '@acpbrasil_news'
+TELEGRAM_BOT_API_KEY = ''
+
+# LOG_LEVEL = 'WARNING'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
