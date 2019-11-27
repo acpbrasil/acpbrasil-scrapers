@@ -92,7 +92,7 @@ class NotifyTelegramPipeline(object):
         )
 
         requests.get(
-            f"https://api.telegram.org/bot{self.bot_apy_key}/sendMessage",
+            f"https://api.telegram.org/bot{self.bot_api_key}/sendMessage",
             params = {
                 'chat_id': self.channel_name,
                 'parse_mode': 'Markdown',
