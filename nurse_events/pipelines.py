@@ -44,6 +44,7 @@ class MongoPipeline(object):
         # initializing spider - opening db connection
         self.client = pymongo.MongoClient(self.mongo_uri)
         self.db = self.client[self.mongo_db]
+        # self.db.authenticate(self.mongo_user, self.mongo_passw)
         logging.info('[MongoPipeline] Opening connection with MongoDB')
 
     def close_spider(self, spider):

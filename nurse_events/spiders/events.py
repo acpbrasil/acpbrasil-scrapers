@@ -13,8 +13,7 @@ class EventsSpider(scrapy.Spider):
 
     def parse(self, response):
         # for row in response.xpath('//table//tr[position()>1]'):
-        # for row in response.xpath('//table//tr[position() > 1 and position() < last()]'):
-        for row in response.xpath('//table//tr[position() = 2]'): # FIXME
+        for row in response.xpath('//table//tr[position() > 1 and position() < last()]'):
 
             if self.close_down:
                 logging.warn('Closing spider: All new events were processed - no need to go further')

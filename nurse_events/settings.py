@@ -73,14 +73,16 @@ RANDOMIZE_DOWNLOAD_DELAY = True
 ITEM_PIPELINES = {
 #    'nurse_events.pipelines.DuplicatesPipeline': 200,
    'nurse_events.pipelines.ValidatePipeline': 200,
-#    'nurse_events.pipelines.MongoPipeline': 300,
+   'nurse_events.pipelines.MongoPipeline': 300,
    'nurse_events.pipelines.NotifyTelegramPipeline': 400,
 }
 
-# Database
+# [Database]
 MONGO_URI = 'mongodb://localhost:27017'
-MONGO_DB = 'nurse-events'
-# Telegram
+# MONGO_URI = 'mongodb://ds349618.mlab.com:49618/?retryWrites=false'
+MONGO_DB = 'acpbrasil-nurse-events'
+
+# [Telegram]
 TELEGRAM_CHANNEL_NAME = '@acpbrasil_news'
 TELEGRAM_BOT_API_KEY = ''
 
