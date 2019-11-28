@@ -77,17 +77,6 @@ ITEM_PIPELINES = {
    'nurse_events.pipelines.NotifyTelegramPipeline': 400,
 }
 
-# [Database]
-MONGO_URI = 'mongodb://localhost:27017'
-# MONGO_URI = 'mongodb://ds349618.mlab.com:49618/?retryWrites=false'
-MONGO_DB = 'acpbrasil-nurse-events'
-
-# [Telegram]
-TELEGRAM_CHANNEL_NAME = '@acpbrasil_news'
-TELEGRAM_BOT_API_KEY = ''
-
-# LOG_LEVEL = 'WARNING'
-
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True
@@ -108,3 +97,15 @@ TELEGRAM_BOT_API_KEY = ''
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+# App settings
+# LOG_LEVEL = 'WARNING'
+
+# [Database]
+MONGO_URI = 'mongodb://localhost:27017'
+# MONGO_URI = 'mongodb://ds349618.mlab.com:49618/?retryWrites=false'
+MONGO_DB = 'acpbrasil-nurse-events'
+
+# [Telegram]
+TELEGRAM_CHANNEL_NAME = '@acpbrasil_news'
+TELEGRAM_BOT_API_KEY = ''

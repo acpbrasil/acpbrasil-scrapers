@@ -9,15 +9,15 @@ class EventsSpider(scrapy.Spider):
     allowed_domains = ['portaldaenfermagem.com.br']
     start_urls = ['https://www.portaldaenfermagem.com.br/agenda-de-eventos']
     
-    close_down = False
+    # close_down = False
 
     def parse(self, response):
         # for row in response.xpath('//table//tr[position()>1]'):
         for row in response.xpath('//table//tr[position() > 1 and position() < last()]'):
 
-            if self.close_down:
-                logging.warn('Closing spider: All new events were processed - no need to go further')
-                raise CloseSpider('Closing spider: All new events were processed - no need to go further')
+            # if self.close_down:
+            #     logging.warn('Closing spider: All new events were processed - no need to go further')
+            #     raise CloseSpider('Closing spider: All new events were processed - no need to go further')
 
             item = EventItem()
             item['title'] = row.xpath('td[1]//text()').extract_first()

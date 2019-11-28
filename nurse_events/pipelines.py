@@ -54,9 +54,9 @@ class MongoPipeline(object):
 
     def process_item(self, item, spider):
         if self.is_duplicate(item):
-            spider.close_down = True
-            raise DropItem(f"Duplicate event found: {item['title']}")
+            # spider.close_down = True
             # spider.crawler.engine.close_spider(self, reason='All new events processed')
+            raise DropItem(f"Duplicate event found: {item['title']}")
         else:
             item['inserted'] = datetime.now()
             self.db[self.collection_name].insert_one(dict(item))
