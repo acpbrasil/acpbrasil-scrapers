@@ -20,6 +20,8 @@ class EventsSpider(scrapy.Spider):
             #     raise CloseSpider('Closing spider: All new events were processed - no need to go further')
 
             item = EventItem()
+            id_site = row.xpath('@onclick').re(r'id=(\d+)')[0]
+            item['id_site'] = id_site # int(id_site)
             item['title'] = row.xpath('td[1]//text()').extract_first()
             item['date'] = row.xpath('td[2]//text()').extract_first()
             item['location'] = row.xpath('td[3]//text()').extract_first()

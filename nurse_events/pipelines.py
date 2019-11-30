@@ -64,9 +64,9 @@ class MongoPipeline(object):
             return item
             
     def is_duplicate(self, item):
-        existent_event = self.db[self.collection_name].find_one({'title': item['title']})
+        existent_event = self.db[self.collection_name].find_one({'id_site': item['id_site']})
         return existent_event is not None
-        # dup_check = self.db[self.collection_name].find({'title':item['title']}).count()
+        # dup_check = self.db[self.collection_name].find({'id_site':item['id_site']}).count()
         # return dup_check > 0
 
 
